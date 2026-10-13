@@ -130,4 +130,19 @@
   RewriteRule ^blog/x4c-rbisf1/?$    /blog/engineer-learning-resources-2026/     [R=301,L]
   RewriteRule ^blog/6ifrokml19dd/?$  /blog/programming-self-study-guide-2026/    [R=301,L]
   RewriteRule ^blog/2ol4bn8dpl/?$    /blog/web-engineer-roadmap-2026/            [R=301,L]
+
+  # =============================================================
+  #  LOW記事8本 削除・統合(2026-10-13)
+  #  2本は本文をpillarに統合済、6本は方向性合致せず削除
+  # =============================================================
+  # 統合2本(本文転記済) → 統合先pillarへ
+  RewriteRule ^blog/mg7cpvj_yqgb/?$  /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/5a45x6x6xo/?$    /blog/server-guide-for-side-business-2026/  [R=301,L]
+  # 削除6本 → 方向性に沿った近縁pillarへ
+  RewriteRule ^blog/wl-2h_gt_tl/?$   /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/ozr41rhdrl5/?$   /blog/programming-self-study-guide-2026/    [R=301,L]
+  RewriteRule ^blog/c3gptzhbx/?$     /blog/engineer-learning-resources-2026/     [R=301,L]
+  RewriteRule ^blog/ppvkdu5cpqd1/?$  /blog/freelance-engineer-agent-2026/        [R=301,L]
+  RewriteRule ^blog/z-ugk2s_92i/?$   /blog/freelance-engineer-agent-2026/        [R=301,L]
+  RewriteRule ^blog/6-4x64aot_hz/?$  /blog/programming-self-study-guide-2026/    [R=301,L]
 </IfModule>
