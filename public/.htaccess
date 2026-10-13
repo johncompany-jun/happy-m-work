@@ -59,18 +59,18 @@
   RewriteRule ^blog/y574q7kpw0ih/?$  /blog/freelance/  [R=301,L]
 
   # =============================================================
-  #  サーバークラスタ統合3本(2026-10-08・22ivt5mg3hl8へ集約)
+  #  サーバークラスタ統合3本(2026-10-08・server-guide-for-side-business-2026へ集約)
   # =============================================================
   # VPS vs レンタサバ・格安レンタサバ・クラウド導入 → 柱記事(個人開発・副業に最適なサーバー完全ガイド)へ
-  RewriteRule ^blog/90-jzi6c5/?$     /blog/22ivt5mg3hl8/  [R=301,L]
-  RewriteRule ^blog/n3pez-7xhz/?$    /blog/22ivt5mg3hl8/  [R=301,L]
-  RewriteRule ^blog/9_fer36t1f0j/?$  /blog/22ivt5mg3hl8/  [R=301,L]
+  RewriteRule ^blog/90-jzi6c5/?$     /blog/server-guide-for-side-business-2026/  [R=301,L]
+  RewriteRule ^blog/n3pez-7xhz/?$    /blog/server-guide-for-side-business-2026/  [R=301,L]
+  RewriteRule ^blog/9_fer36t1f0j/?$  /blog/server-guide-for-side-business-2026/  [R=301,L]
 
   # =============================================================
-  #  言語比較クラスタ統合(2026-10-08・c-ux14j-gkへ集約)
+  #  言語比較クラスタ統合(2026-10-08・programming-language-guide-2026へ集約)
   # =============================================================
   # Python vs JavaScript → 柱記事(プログラミング言語選び完全ガイド)へ
-  RewriteRule ^blog/a9zf6tbqz7i/?$   /blog/c-ux14j-gk/  [R=301,L]
+  RewriteRule ^blog/a9zf6tbqz7i/?$   /blog/programming-language-guide-2026/  [R=301,L]
 
   # =============================================================
   #  フレームワーク比較クラスタ統合(2026-10-08・j20y_ctatomへ集約)
@@ -79,11 +79,11 @@
   RewriteRule ^blog/dhpibb4u0e/?$    /blog/j20y_ctatom/  [R=301,L]
 
   # =============================================================
-  #  学習リソースクラスタ統合(2026-10-08・x4c-rbisf1へ集約)
+  #  学習リソースクラスタ統合(2026-10-08・engineer-learning-resources-2026へ集約)
   # =============================================================
   # YouTube/無料教材 → 柱記事(エンジニア学習リソース完全ガイド)へ
-  RewriteRule ^blog/l9yoatt48/?$     /blog/x4c-rbisf1/  [R=301,L]
-  RewriteRule ^blog/z176w6h36oj/?$   /blog/x4c-rbisf1/  [R=301,L]
+  RewriteRule ^blog/l9yoatt48/?$     /blog/engineer-learning-resources-2026/  [R=301,L]
+  RewriteRule ^blog/z176w6h36oj/?$   /blog/engineer-learning-resources-2026/  [R=301,L]
 
   # =============================================================
   #  ポートフォリオクラスタ統合(2026-10-08・tv_w_8kixへ集約)
@@ -114,9 +114,20 @@
   RewriteRule ^blog/90shzfs36/?$     /blog/pxhbtzmvqwwg/  [R=301,L]
 
   # =============================================================
-  #  独学・モチベーション・NG習慣クラスタ統合(2026-10-08・6ifrokml19ddへ集約)
+  #  独学・モチベーション・NG習慣クラスタ統合(2026-10-08・programming-self-study-guide-2026へ集約)
   # =============================================================
   # モチベ維持 / NG習慣 → 柱記事(独学挫折回避完全ガイド)へ
-  RewriteRule ^blog/agolki3th/?$     /blog/6ifrokml19dd/  [R=301,L]
-  RewriteRule ^blog/8clfvjbdvo/?$    /blog/6ifrokml19dd/  [R=301,L]
+  RewriteRule ^blog/agolki3th/?$     /blog/programming-self-study-guide-2026/  [R=301,L]
+  RewriteRule ^blog/8clfvjbdvo/?$    /blog/programming-self-study-guide-2026/  [R=301,L]
+
+  # =============================================================
+  #  ピラー5本 旧ランダムID → 意味あるスラッグへ改名(2026-10-13)
+  #  未インデックス改善+LLMO/SEO強化のためスラッグ化
+  #  ⚠ microCMS管理画面でContent IDを下記新スラッグに変更する作業と対応
+  # =============================================================
+  RewriteRule ^blog/22ivt5mg3hl8/?$  /blog/server-guide-for-side-business-2026/  [R=301,L]
+  RewriteRule ^blog/c-ux14j-gk/?$    /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/x4c-rbisf1/?$    /blog/engineer-learning-resources-2026/     [R=301,L]
+  RewriteRule ^blog/6ifrokml19dd/?$  /blog/programming-self-study-guide-2026/    [R=301,L]
+  RewriteRule ^blog/2ol4bn8dpl/?$    /blog/web-engineer-roadmap-2026/            [R=301,L]
 </IfModule>
