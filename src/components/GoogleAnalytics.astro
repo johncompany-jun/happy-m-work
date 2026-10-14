@@ -1,0 +1,43 @@
+---
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const enabled = import.meta.env.PROD && GA_ID;
+---
+
+{enabled && (
+	<>
+		<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+		<script is:inline define:vars={{ GA_ID }}>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			window.gtag = gtag;
+			gtag('js', new Date());
+			gtag('config', GA_ID, { anonymize_ip: true });
+
+			const AFFILIATE_HOSTS = {
+				't.felmat.net': 'felmat',
+				'px.a8.net': 'a8',
+				't.afi-b.com': 'afi_b',
+				'h.accesstrade.net': 'accesstrade',
+				'click.linksynergy.com': 'linkshare',
+				'ck.jp.ap.valuecommerce.com': 'valuecommerce',
+			};
+
+			document.addEventListener('click', function(e) {
+				const a = e.target.closest && e.target.closest('a[href]');
+				if (!a) return;
+				let host;
+				try { host = new URL(a.href, location.href).hostname; } catch (_) { return; }
+				const asp = AFFILIATE_HOSTS[host];
+				if (!asp) return;
+				const label = a.textContent ? a.textContent.trim().slice(0, 80) : '';
+				const pagePath = location.pathname;
+				gtag('event', 'affiliate_click', {
+					asp: asp,
+					link_url: a.href,
+					link_text: label,
+					page_path: pagePath,
+				});
+			}, { capture: true, passive: true });
+		</script>
+	</>
+)}
