@@ -8,6 +8,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # =============================================================
+  #  www → 非www 301リダイレクト(2026-10-15)
+  #  GSC「代替ページ(適切なcanonicalタグあり)」解消のため
+  #  canonicalは https://happy-m-work.com/ 固定なのでwww版を301で寄せる
+  # =============================================================
+  RewriteCond %{HTTP_HOST} ^www\.happy-m-work\.com$ [NC]
+  RewriteRule ^(.*)$ https://happy-m-work.com/$1 [R=301,L]
+
   # --- テレワーク薄記事4本 → 独立手順ピラーへ(2026-10-15:sscms7e5w削除に伴い付け替え)---
   RewriteRule ^blog/gncbw2c2ahq/?$  /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
   RewriteRule ^blog/s_se4l-9mq1/?$  /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
