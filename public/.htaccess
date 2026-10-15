@@ -179,4 +179,15 @@
   # =============================================================
   RewriteRule ^blog/qwvejtgmx/?$     /blog/freelance-coworking-space-comparison-2026/     [R=301,L]
   RewriteRule ^blog/p1da-6eqo7/?$    /blog/ai-development-efficiency-chatgpt-copilot-2026/ [R=301,L]
+
+  # =============================================================
+  #  リライト+スラッグ変更6本(2026-10-15・フリーランス方向性で再構築)
+  #  旧ID → 意味スラッグへ301。各記事はフリーランス角度で+2500〜4000字追加
+  # =============================================================
+  RewriteRule ^blog/gni6zt10mb/?$    /blog/freelance-vs-tenshoku-comparison-2026/                 [R=301,L]
+  RewriteRule ^blog/vdokda6t1p9y/?$  /blog/freelance-workspace-setup-2026/                        [R=301,L]
+  RewriteRule ^blog/oixeqh65qx8/?$   /blog/laravel-service-layer-for-freelance-rate-up-2026/      [R=301,L]
+  RewriteRule ^blog/cyl08prjjx5/?$   /blog/freelance-personal-site-astro-microcms-2026/           [R=301,L]
+  RewriteRule ^blog/o7il5q1lx4he/?$  /blog/self-taught-engineer-freelance-route-2026/             [R=301,L]
+  RewriteRule ^blog/xup7oyi_l1y2/?$  /blog/signs-to-leave-company-for-freelance-2026/             [R=301,L]
 </IfModule>
