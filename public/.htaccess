@@ -8,11 +8,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # --- テレワーク薄記事4本 → 「メリット・デメリット完全ガイド」(sscms7e5w)へ統合 ---
-  RewriteRule ^blog/gncbw2c2ahq/?$  /blog/sscms7e5w/  [R=301,L]
-  RewriteRule ^blog/s_se4l-9mq1/?$  /blog/sscms7e5w/  [R=301,L]
-  RewriteRule ^blog/xvex2wqwbiq/?$  /blog/sscms7e5w/  [R=301,L]
-  RewriteRule ^blog/8rfqxx41hk/?$   /blog/sscms7e5w/  [R=301,L]
+  # --- テレワーク薄記事4本 → 独立手順ピラーへ(2026-10-15:sscms7e5w削除に伴い付け替え)---
+  RewriteRule ^blog/gncbw2c2ahq/?$  /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
+  RewriteRule ^blog/s_se4l-9mq1/?$  /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
+  RewriteRule ^blog/xvex2wqwbiq/?$  /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
+  RewriteRule ^blog/8rfqxx41hk/?$   /blog/freelance-engineer-how-to-become-2026/  [R=301,L]
 
   # --- モバイルデュアルディスプレイ → 自宅版(29_rgphpu)へ統合 ---
   RewriteRule ^blog/3lyaeae6x7-i/?$ /blog/29_rgphpu/  [R=301,L]
@@ -145,4 +145,38 @@
   RewriteRule ^blog/ppvkdu5cpqd1/?$  /blog/freelance-engineer-agent-2026/        [R=301,L]
   RewriteRule ^blog/z-ugk2s_92i/?$   /blog/freelance-engineer-agent-2026/        [R=301,L]
   RewriteRule ^blog/6-4x64aot_hz/?$  /blog/programming-self-study-guide-2026/    [R=301,L]
+
+  # =============================================================
+  #  非インデックス17本の削除+ピラー付け替え(2026-10-15)
+  #  トピック別に最適ピラーへ分散(全部1本に寄せると不自然なため)
+  # =============================================================
+  # 学習・スクール系3本 → 学習リソースピラー
+  RewriteRule ^blog/kf4cnp3gcm/?$    /blog/engineer-learning-resources-2026/     [R=301,L]
+  RewriteRule ^blog/ryk_45vz5t/?$    /blog/engineer-learning-resources-2026/     [R=301,L]
+  RewriteRule ^blog/s2yjik67k/?$     /blog/engineer-learning-resources-2026/     [R=301,L]
+  # 言語比較・入門系3本 → 言語ピラー
+  RewriteRule ^blog/nrrph5jzv/?$     /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/do8xfcdxa/?$     /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/pokdyv-d7/?$     /blog/programming-language-guide-2026/      [R=301,L]
+  # 独学・エラー解決系2本 → 独学ピラー
+  RewriteRule ^blog/sb2-ep91z4/?$    /blog/programming-self-study-guide-2026/    [R=301,L]
+  RewriteRule ^blog/z8kyv9cytt3/?$   /blog/programming-self-study-guide-2026/    [R=301,L]
+  # 設計・システム系2本 → ロードマップピラー
+  RewriteRule ^blog/w0yh4rtf_gkr/?$  /blog/web-engineer-roadmap-2026/            [R=301,L]
+  RewriteRule ^blog/nnbfo74oq/?$     /blog/web-engineer-roadmap-2026/            [R=301,L]
+  # サーバー系1本 → サーバーピラー
+  RewriteRule ^blog/vnat2dcx5/?$     /blog/server-guide-for-side-business-2026/  [R=301,L]
+  # テレワーク・リモート開発・転職資格・チーム開発6本 → 独立手順ピラー
+  RewriteRule ^blog/flp4wu92r/?$     /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/4h4kpg5k3ag/?$   /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/zumnm6rf9l/?$    /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/c45ru1oojo/?$    /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/8j_pyn7y9f/?$    /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/sscms7e5w/?$     /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+
+  # =============================================================
+  #  スラッグ変更2本(2026-10-15・ランダムID→意味あるkebab-case)
+  # =============================================================
+  RewriteRule ^blog/qwvejtgmx/?$     /blog/freelance-coworking-space-comparison-2026/     [R=301,L]
+  RewriteRule ^blog/p1da-6eqo7/?$    /blog/ai-development-efficiency-chatgpt-copilot-2026/ [R=301,L]
 </IfModule>
