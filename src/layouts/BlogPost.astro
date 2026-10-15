@@ -130,14 +130,16 @@ const jsonLd = [
 				<div class="mx-auto max-w-3xl space-y-8 px-5">
 					<header class="text-center">
 						<div class="mb-3 text-sm uppercase tracking-[0.2em] text-brand-text/60">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
+							{updatedDate ? (
+								<>
+									<span>最終更新 </span><FormattedDate date={updatedDate} />
 									<div class="mt-1 text-xs italic tracking-wide text-brand-text/50">
-										Last updated on <FormattedDate date={updatedDate} />
+										初回公開 <FormattedDate date={pubDate} />
 									</div>
-								)
-							}
+								</>
+							) : (
+								<FormattedDate date={pubDate} />
+							)}
 						</div>
 						{categoryMeta && (
 							<div class="mb-3">
