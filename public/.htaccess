@@ -209,4 +209,36 @@
   RewriteRule ^blog/pxhbtzmvqwwg/?$  /blog/web-api-complete-guide-2026/               [R=301,L]
   RewriteRule ^blog/5h8pglq99z/?$    /blog/docker-complete-guide-2026/                [R=301,L]
   RewriteRule ^blog/2lrwm485o02i/?$  /blog/digital-nomad-tools-2026/                  [R=301,L]
+
+  # =============================================================
+  #  Phase E 削除4本(2026-10-15・薄い記事・カニバリ)
+  # =============================================================
+  RewriteRule ^blog/aus5c34m2gim/?$  /blog/engineer-learning-resources-2026/     [R=301,L]
+  RewriteRule ^blog/1hclaqy0k5xs/?$  /blog/freelance-engineer-how-to-become-2026/ [R=301,L]
+  RewriteRule ^blog/bqd25thvd1/?$    /blog/programming-self-study-guide-2026/    [R=301,L]
+  RewriteRule ^blog/2bfzr_fghi4/?$   /blog/programming-language-guide-2026/      [R=301,L]
+
+  # =============================================================
+  #  Phase D 統合7本(2026-10-15・本文転記済→ピラーへ301)
+  # =============================================================
+  RewriteRule ^blog/bm_p5pm1br1f/?$  /blog/server-guide-for-side-business-2026/  [R=301,L]
+  RewriteRule ^blog/hj2wd5-yjdhq/?$  /blog/programming-language-guide-2026/      [R=301,L]
+  RewriteRule ^blog/8ntyl7f9vyqf/?$  /blog/web-engineer-roadmap-2026/            [R=301,L]
+  RewriteRule ^blog/s9obg_2e8f/?$    /blog/web-framework-comparison-2026/        [R=301,L]
+  RewriteRule ^blog/1xme63e0yk/?$    /blog/web-framework-comparison-2026/        [R=301,L]
+  RewriteRule ^blog/a-07cgb2xro6/?$  /blog/web-framework-comparison-2026/        [R=301,L]
+  RewriteRule ^blog/j241zq8o4/?$     /blog/programming-self-study-guide-2026/    [R=301,L]
+
+  # =============================================================
+  #  Phase C リライト+スラッグ変更7本(2026-10-15・フリーランス方向転換)
+  #  旧ID → 意味スラッグへ301。各記事はフリーランス角度で+2500〜3000字追加
+  #  ⚠ microCMS管理画面でContent IDを下記新スラッグに変更する作業と対応
+  # =============================================================
+  RewriteRule ^blog/ts45hilx-v/?$    /blog/freelance-webcam-for-online-meetings-2026/   [R=301,L]
+  RewriteRule ^blog/o-cjvi8_i_d/?$   /blog/freelance-project-management-tools-2026/     [R=301,L]
+  RewriteRule ^blog/29_rgphpu/?$     /blog/freelance-dual-display-setup-2026/           [R=301,L]
+  RewriteRule ^blog/i30mpl33xe/?$    /blog/freelance-online-meeting-lighting-2026/      [R=301,L]
+  RewriteRule ^blog/r_4_eiq9x/?$     /blog/engineer-work-style-independence-2026/       [R=301,L]
+  RewriteRule ^blog/ls0935jh6/?$     /blog/freelance-at-home-skill-maintenance-2026/    [R=301,L]
+  RewriteRule ^blog/18r19p1pe5mg/?$  /blog/freelance-engineer-highly-rated-2026/        [R=301,L]
 </IfModule>
