@@ -42,7 +42,9 @@ jobs:
           PUBLIC_GA_MEASUREMENT_ID: G-RBG9BJ7H23
         run: npm run build
 
-      - name: Deploy via FTP
+      - name: Deploy via FTP (attempt 1)
+        id: deploy1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server:     ${{ secrets.FTP_SERVER }}
@@ -54,6 +56,57 @@ jobs:
           dangerous-clean-slate: false
           protocol: ftps
           security: loose
+          timeout: 120000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            koemado/**
+
+      - name: Wait 30s before retry
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy via FTP (attempt 2)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server:     ${{ secrets.FTP_SERVER }}
+          username:   ${{ secrets.FTP_USERNAME }}
+          password:   ${{ secrets.FTP_PASSWORD }}
+          local-dir:  ./dist/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          dangerous-clean-slate: false
+          protocol: ftps
+          security: loose
+          timeout: 120000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            koemado/**
+
+      - name: Wait 60s before final retry
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy via FTP (attempt 3 - final)
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server:     ${{ secrets.FTP_SERVER }}
+          username:   ${{ secrets.FTP_USERNAME }}
+          password:   ${{ secrets.FTP_PASSWORD }}
+          local-dir:  ./dist/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          dangerous-clean-slate: false
+          protocol: ftps
+          security: loose
+          timeout: 120000
           exclude: |
             **/.git*
             **/.git*/**
