@@ -190,4 +190,23 @@
   RewriteRule ^blog/cyl08prjjx5/?$   /blog/freelance-personal-site-astro-microcms-2026/           [R=301,L]
   RewriteRule ^blog/o7il5q1lx4he/?$  /blog/self-taught-engineer-freelance-route-2026/             [R=301,L]
   RewriteRule ^blog/xup7oyi_l1y2/?$  /blog/signs-to-leave-company-for-freelance-2026/             [R=301,L]
+
+  # =============================================================
+  #  スラッグ変更14本(2026-10-15・Phase C・ランダムID→意味kebab-case)
+  #  Group A(品質◎・方向性◎):10本 / Group B(ピラー):4本
+  # =============================================================
+  RewriteRule ^blog/7fl7cl82jc/?$    /blog/laravel-xserver-deploy-freelance-2026/     [R=301,L]
+  RewriteRule ^blog/eb7xy3n3rtor/?$  /blog/ai-side-business-complete-guide-2026/      [R=301,L]
+  RewriteRule ^blog/62bhsgqcw6/?$    /blog/domain-registration-guide-2026/            [R=301,L]
+  RewriteRule ^blog/t0zdieaid8xy/?$  /blog/ai-coding-tools-comparison-2026/           [R=301,L]
+  RewriteRule ^blog/c89m8d_pvbge/?$  /blog/engineer-vpn-comparison-2026/              [R=301,L]
+  RewriteRule ^blog/dvnuij7ipw/?$    /blog/samurai-engineer-review-2026/              [R=301,L]
+  RewriteRule ^blog/xbf8_9q4m/?$     /blog/techacademy-alternative-schools-2026/      [R=301,L]
+  RewriteRule ^blog/v4plorolp1h/?$   /blog/freelance-nodejs-server-comparison-2026/   [R=301,L]
+  RewriteRule ^blog/cji7g4lnx5m/?$   /blog/shift-teras-campus-review-2026/            [R=301,L]
+  RewriteRule ^blog/tv_w_8kix/?$     /blog/engineer-portfolio-complete-guide-2026/    [R=301,L]
+  RewriteRule ^blog/j20y_ctatom/?$   /blog/web-framework-comparison-2026/             [R=301,L]
+  RewriteRule ^blog/pxhbtzmvqwwg/?$  /blog/web-api-complete-guide-2026/               [R=301,L]
+  RewriteRule ^blog/5h8pglq99z/?$    /blog/docker-complete-guide-2026/                [R=301,L]
+  RewriteRule ^blog/2lrwm485o02i/?$  /blog/digital-nomad-tools-2026/                  [R=301,L]
 </IfModule>
