@@ -5,11 +5,13 @@ import Footer from '../../components/Footer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getAllPostSummaries, getPostSummariesByCategory } from '../../lib/blog-data';
+import type { BlogPostSummary } from '../../lib/blog-data';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { CATEGORIES, buildBreadcrumbJsonLd } from '../../lib/seo';
 
+const displayDate = (post: BlogPostSummary) => post.updatedDate ?? post.pubDate;
 const posts = (await getAllPostSummaries()).sort(
-	(a, b) => b.pubDate.valueOf() - a.pubDate.valueOf()
+	(a, b) => displayDate(b).valueOf() - displayDate(a).valueOf()
 );
 
 const categories = CATEGORIES.map((c) => ({
@@ -76,7 +78,7 @@ const jsonLd = [
 					{posts.slice(0, 3).map((post) => (
 						<li class="group rounded-2xl border border-brand-text/10 p-5 shadow-lg-soft transition hover:-translate-y-1 hover:shadow-xl-soft">
 							<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-								<FormattedDate date={post.pubDate} />
+								<FormattedDate date={displayDate(post)} />
 							</p>
 							<a href={`/blog/${post.slug}/`} class="mt-3 block text-lg font-semibold tracking-[0.08em] text-brand-text transition group-hover:text-brand-text/70">
 								{post.title}
@@ -88,7 +90,9 @@ const jsonLd = [
 			</section>
 
 			{categories.map((category) => {
-				const allCategoryPosts = postsByCategory[category.id] ?? [];
+				const allCategoryPosts = (postsByCategory[category.id] ?? [])
+					.slice()
+					.sort((a, b) => displayDate(b).valueOf() - displayDate(a).valueOf());
 				const categoryPosts = allCategoryPosts.slice(0, 5);
 				return (
 					<section id={category.id} class="space-y-6">
@@ -111,7 +115,7 @@ const jsonLd = [
 								<li class="rounded-2xl border border-brand-text/10 p-5 shadow-lg-soft transition hover:-translate-y-0.5 hover:shadow-xl-soft">
 									<div class="flex flex-wrap items-center justify-between gap-3">
 										<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-											<FormattedDate date={post.pubDate} />
+											<FormattedDate date={displayDate(post)} />
 										</p>
 										<span class="text-xs uppercase tracking-[0.3em] text-brand-text/50">{category.title}</span>
 									</div>

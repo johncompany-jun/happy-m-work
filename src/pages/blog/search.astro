@@ -13,7 +13,7 @@ const postsJson = JSON.stringify(
 		title: p.title,
 		description: p.description,
 		category: p.category ?? '',
-		pubDate: p.pubDate.toISOString(),
+		displayDate: (p.updatedDate ?? p.pubDate).toISOString(),
 	}))
 );
 ---
@@ -102,7 +102,7 @@ const postsJson = JSON.stringify(
 					.map(
 						(p) => `
 					<li class="rounded-2xl border border-brand-text/10 p-5 shadow-lg-soft transition hover:-translate-y-0.5 hover:shadow-xl-soft">
-						<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">${formatDate(p.pubDate)}</p>
+						<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">${formatDate(p.displayDate)}</p>
 						<a href="/blog/${p.slug}/" class="mt-2 block text-lg font-semibold tracking-[0.08em] text-brand-text transition hover:text-brand-text/70">
 							${escapeHtml(p.title)}
 						</a>

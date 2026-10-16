@@ -12,8 +12,9 @@ import { buildWebSiteJsonLd, buildOrganizationJsonLd } from '../lib/seo';
 const homeJsonLd = [buildWebSiteJsonLd(), buildOrganizationJsonLd()];
 
 
+const displayDate = (post: BlogPostSummary) => post.updatedDate ?? post.pubDate;
 const posts: BlogPostSummary[] = (await getAllPostSummaries()).sort(
-	(a, b) => b.pubDate.valueOf() - a.pubDate.valueOf()
+	(a, b) => displayDate(b).valueOf() - displayDate(a).valueOf()
 );
 const latestPosts = posts.slice(0, 3);
 
@@ -87,7 +88,7 @@ const postsByCategory: Record<string, BlogPostSummary[]> = Object.fromEntries(
 						{latestPosts.map((post) => (
 							<li class="border-b border-brand-text/10 pb-6 last:border-none last:pb-0">
 								<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-									<FormattedDate date={post.pubDate} />
+									<FormattedDate date={displayDate(post)} />
 								</p>
 								<a
 									href={`/blog/${post.slug}/`}
@@ -144,7 +145,7 @@ const postsByCategory: Record<string, BlogPostSummary[]> = Object.fromEntries(
 										{categoryPosts.map((post) => (
 											<li class="flex items-start gap-4">
 												<span class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-													<FormattedDate date={post.pubDate} />
+													<FormattedDate date={displayDate(post)} />
 												</span>
 												<a
 													href={`/blog/${post.slug}/`}

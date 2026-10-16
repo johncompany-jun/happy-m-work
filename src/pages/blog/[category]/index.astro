@@ -9,6 +9,8 @@ import { CATEGORIES, buildBreadcrumbJsonLd, type CategoryMeta } from '../../../l
 import { getPostSummariesByCategory } from '../../../lib/blog-data';
 import type { BlogPostSummary } from '../../../lib/blog-data';
 
+const displayDate = (post: BlogPostSummary) => post.updatedDate ?? post.pubDate;
+
 export async function getStaticPaths() {
 	const postsByCategory = await getPostSummariesByCategory();
 	return CATEGORIES.map((category) => ({
@@ -16,7 +18,7 @@ export async function getStaticPaths() {
 		props: {
 			category,
 			posts: (postsByCategory[category.id] ?? []).sort(
-				(a, b) => b.pubDate.valueOf() - a.pubDate.valueOf()
+				(a, b) => (b.updatedDate ?? b.pubDate).valueOf() - (a.updatedDate ?? a.pubDate).valueOf()
 			),
 		},
 	}));
@@ -83,7 +85,7 @@ const jsonLd = [
 							<li class="group rounded-2xl border border-brand-text/10 p-5 shadow-lg-soft transition hover:-translate-y-1 hover:shadow-xl-soft">
 								<div class="flex flex-wrap items-center justify-between gap-3">
 									<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-										<FormattedDate date={post.pubDate} />
+										<FormattedDate date={displayDate(post)} />
 									</p>
 									<span class="text-xs uppercase tracking-[0.3em] text-brand-text/50">{category.label}</span>
 								</div>
