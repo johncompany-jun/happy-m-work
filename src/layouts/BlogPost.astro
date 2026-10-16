@@ -32,6 +32,7 @@ interface Props {
 	contentHtml?: string | null;
 	slug: string;
 	category?: string | null;
+	hashtag?: string[];
 	relatedPosts?: BlogPostSummary[];
 }
 
@@ -44,6 +45,7 @@ const {
 	contentHtml,
 	slug,
 	category,
+	hashtag = [],
 	relatedPosts = [],
 } = Astro.props;
 
@@ -160,6 +162,19 @@ const jsonLd = [
 					<div class="space-y-6 text-base leading-8 tracking-wide text-brand-text/80 md:text-lg [&_a]:text-blue-600 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-blue-800 [&_h2]:scroll-mt-24 [&_h3]:scroll-mt-24">
 						{bodyHtml ? <Fragment set:html={bodyHtml} /> : <slot />}
 					</div>
+					{hashtag.length > 0 && (
+						<div class="mt-10 flex flex-wrap items-center gap-2">
+							<span class="text-xs uppercase tracking-[0.3em] text-brand-text/50">Tags</span>
+							{hashtag.map((tag) => (
+								<a
+									href={`/blog/tag/${encodeURIComponent(tag)}/`}
+									class="inline-block rounded-full border border-brand-text/20 px-3 py-1 text-xs tracking-[0.08em] text-brand-text/70 transition hover:bg-brand-text hover:text-white"
+								>
+									#{tag}
+								</a>
+							))}
+						</div>
+					)}
 					<aside class="mt-12 rounded-3xl border border-brand-text/10 bg-brand-background/70 p-6 shadow-lg-soft">
 						<p class="font-display text-xs uppercase tracking-[0.4em] text-brand-text/60">Author</p>
 						<p class="mt-2 font-display text-lg tracking-[0.12em] text-brand-text">Jun Matsui</p>

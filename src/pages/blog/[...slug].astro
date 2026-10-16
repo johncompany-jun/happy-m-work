@@ -24,6 +24,7 @@ let pubDate: Date;
 let updatedDate: Date | null;
 let heroImage: string | null;
 let category: string | null;
+let hashtag: string[] = [];
 
 if (detail.source === 'microcms') {
 	contentHtml = detail.contentHtml;
@@ -33,6 +34,7 @@ if (detail.source === 'microcms') {
 	updatedDate = detail.updatedDate;
 	heroImage = detail.heroImage;
 	category = detail.category;
+	hashtag = detail.hashtag ?? [];
 } else {
 	const { entry } = detail;
 	const rendered = await entry.render();
@@ -43,6 +45,7 @@ if (detail.source === 'microcms') {
 	updatedDate = entry.data.updatedDate ?? null;
 	heroImage = entry.data.heroImage ?? null;
 	category = entry.data.category ?? null;
+	hashtag = detail.hashtag ?? [];
 }
 
 const relatedPosts = await getRelatedPosts(detail.slug, category, 4);
@@ -57,6 +60,7 @@ const relatedPosts = await getRelatedPosts(detail.slug, category, 4);
 	contentHtml={contentHtml}
 	slug={detail.slug}
 	category={category}
+	hashtag={hashtag}
 	relatedPosts={relatedPosts}
 >
 	{Content && <Content />}

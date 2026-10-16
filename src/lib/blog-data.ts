@@ -30,6 +30,7 @@ export type BlogPostSummary =
       title: string;
       description: string;
       category: string | null;
+      hashtag: string[];
       pubDate: Date;
       updatedDate: Date | null;
       heroImage: string | null;
@@ -44,6 +45,7 @@ export type BlogPostDetail =
       title: string;
       description: string;
       category: string | null;
+      hashtag: string[];
       pubDate: Date;
       updatedDate: Date | null;
       heroImage: string | null;
@@ -81,6 +83,7 @@ export async function getAllPostSummaries(): Promise<BlogPostSummary[]> {
       title: e.data.title,
       description: e.data.description,
       category: e.data.category ?? null,
+      hashtag: [],
       pubDate: e.data.pubDate,
       updatedDate: e.data.updatedDate ?? null,
       heroImage: e.data.heroImage ?? null,
@@ -112,6 +115,7 @@ export async function getAllPostDetails(): Promise<BlogPostDetail[]> {
       title: e.data.title,
       description: e.data.description,
       category: e.data.category ?? null,
+      hashtag: [],
       pubDate: e.data.pubDate,
       updatedDate: e.data.updatedDate ?? null,
       heroImage: e.data.heroImage ?? null,
@@ -159,6 +163,7 @@ export async function getBlogDetail(slug: string): Promise<BlogPostDetail> {
     title: hit.data.title,
     description: hit.data.description,
     category: hit.data.category ?? null,
+    hashtag: [],
     pubDate: hit.data.pubDate,
     updatedDate: hit.data.updatedDate ?? null,
     heroImage: hit.data.heroImage ?? null,
@@ -202,4 +207,21 @@ export async function getPostSummariesByCategory(): Promise<Record<string, BlogP
     acc[post.category].push(post);
     return acc;
   }, {});
+}
+
+export async function getPostSummariesByTag(): Promise<Record<string, BlogPostSummary[]>> {
+  const posts = await getAllPostSummaries();
+
+  return posts.reduce<Record<string, BlogPostSummary[]>>((acc, post) => {
+    for (const tag of post.hashtag ?? []) {
+      if (!acc[tag]) acc[tag] = [];
+      acc[tag].push(post);
+    }
+    return acc;
+  }, {});
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const byTag = await getPostSummariesByTag();
+  return Object.keys(byTag).sort();
 }

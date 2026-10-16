@@ -194,6 +194,7 @@ export interface BlogSummary {
   title: string;
   description: string;
   category: string | null;
+  hashtag: string[];
   pubDate: Date;
   updatedDate: Date | null;
   heroImage: string | null;
@@ -203,6 +204,12 @@ export interface BlogSummary {
 export interface BlogDetail extends BlogSummary {
   contentHtml: string | null;
   contentRaw: string | null;
+}
+
+function resolveHashtag(entry: MicroCMSBlogContent): string[] {
+  const raw = (entry as { hashtag?: unknown }).hashtag;
+  if (!Array.isArray(raw)) return [];
+  return raw.filter((v): v is string => typeof v === 'string' && v.length > 0);
 }
 
 function toSummary(entry: MicroCMSBlogContent): BlogSummary {
@@ -217,6 +224,7 @@ function toSummary(entry: MicroCMSBlogContent): BlogSummary {
     title: entry.title ?? slug,
     description: buildDescription(entry),
     category: resolveCategory(entry),
+    hashtag: resolveHashtag(entry),
     pubDate,
     updatedDate,
     heroImage: pickImageUrl(entry),
