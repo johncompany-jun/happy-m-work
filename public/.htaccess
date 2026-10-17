@@ -211,7 +211,9 @@
   RewriteRule ^blog/dvnuij7ipw/?$    /blog/samurai-engineer-review-2026/              [R=301,L]
   RewriteRule ^blog/xbf8_9q4m/?$     /blog/techacademy-alternative-schools-2026/      [R=301,L]
   RewriteRule ^blog/v4plorolp1h/?$   /blog/freelance-nodejs-server-comparison-2026/   [R=301,L]
-  RewriteRule ^blog/cji7g4lnx5m/?$   /blog/shift-teras-campus-review-2026/            [R=301,L]
+  RewriteRule ^blog/cji7g4lnx5m/?$   /blog/techacademy-alternative-schools-2026/      [R=301,L]
+  # SHIFT TERAS CAMPUS ASP提携終了(2026-10-17)に伴い、代替校ガイドへ集約
+  RewriteRule ^blog/shift-teras-campus-review-2026/?$  /blog/techacademy-alternative-schools-2026/  [R=301,L]
   RewriteRule ^blog/tv_w_8kix/?$     /blog/engineer-portfolio-complete-guide-2026/    [R=301,L]
   RewriteRule ^blog/j20y_ctatom/?$   /blog/web-framework-comparison-2026/             [R=301,L]
   RewriteRule ^blog/pxhbtzmvqwwg/?$  /blog/web-api-complete-guide-2026/               [R=301,L]
