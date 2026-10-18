@@ -207,7 +207,7 @@ const jsonLd = [
 							{relatedPosts.map((post) => (
 								<li class="group rounded-2xl border border-brand-text/10 p-5 shadow-lg-soft transition hover:-translate-y-1 hover:shadow-xl-soft">
 									<p class="text-xs uppercase tracking-[0.2em] text-brand-text/50">
-										<FormattedDate date={post.pubDate} />
+										<FormattedDate date={post.updatedDate ?? post.pubDate} />
 									</p>
 									<a
 										href={`/blog/${post.slug}/`}
