@@ -52,6 +52,29 @@
 	article th {
 		@apply text-left font-semibold;
 	}
+
+	article .table-scroll {
+		@apply my-6;
+	}
+
+	article .table-scroll-hint {
+		@apply mb-1 text-right text-xs tracking-[0.08em] text-brand-text/50;
+	}
+
+	article .table-scroll-inner {
+		@apply relative overflow-x-auto rounded-lg;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	article .table-scroll-inner > table {
+		@apply my-0 min-w-[36rem];
+	}
+
+	@media (min-width: 768px) {
+		article .table-scroll-hint {
+			display: none;
+		}
+	}
 }
 
 @layer components {

@@ -119,6 +119,24 @@ export function optimizeBodyImages(html: string): string {
 }
 
 /**
+ * 本文中の<table>を横スクロール可能なラッパーで包む
+ * - モバイルで列が潰れないよう overflow-x: auto のコンテナに入れる
+ * - スクロールできる旨のヒントを表の上に添える(CSSでモバイル時のみ表示)
+ */
+export function wrapTablesForScroll(html: string): string {
+  if (!html) return html;
+
+  return html.replace(/<table\b[\s\S]*?<\/table>/gi, (match) => {
+    return (
+      '<div class="table-scroll">' +
+      '<p class="table-scroll-hint" aria-hidden="true">← 横にスクロールできます →</p>' +
+      `<div class="table-scroll-inner" role="region" aria-label="横スクロールできる表" tabindex="0">${match}</div>` +
+      '</div>'
+    );
+  });
+}
+
+/**
  * 本文からFAQセクション(H2「よくある質問」等)配下のH3+回答を抽出
  * - H3テキストを質問、次のH3/H2までの<p><ul><ol>テキストを回答とする
  * - FAQセクションが見つからない場合は空配列

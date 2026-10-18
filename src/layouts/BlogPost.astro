@@ -20,6 +20,7 @@ import {
 	optimizeBodyImages,
 	optimizeImage,
 	resolveOgImage,
+	wrapTablesForScroll,
 } from '../lib/content';
 import type { BlogPostSummary } from '../lib/blog-data';
 
@@ -57,7 +58,7 @@ const optimizedHero = heroImage
 	? optimizeImage(heroImage, { width: 1280, quality: 80, format: 'webp' })
 	: null;
 const { toc, html: processedHtml } = buildToc(contentHtml);
-const bodyHtml = processedHtml ? optimizeBodyImages(processedHtml) : null;
+const bodyHtml = processedHtml ? wrapTablesForScroll(optimizeBodyImages(processedHtml)) : null;
 
 const breadcrumbItems = [
 	{ name: 'HOME', href: '/' },
