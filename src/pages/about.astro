@@ -70,10 +70,10 @@ import { SITE_TITLE } from '../consts';
 			</section>
 
 			<section class="rounded-3xl bg-brand-background/70 p-8 shadow-lg-soft">
-				<p class="font-display text-xs uppercase tracking-[0.4em] text-brand-text/60">Product in development</p>
+				<p class="font-display text-xs uppercase tracking-[0.4em] text-brand-text/60">Product · β public</p>
 				<h2 class="mt-2 font-display text-2xl tracking-[0.12em] text-brand-text">こえまど ─ どんなWebサイトにも埋め込めるAI音声オペレーター</h2>
 				<p class="mt-4 text-sm leading-7 tracking-[0.08em] text-brand-text/80">
-					運営者が開発中の自社プロダクトです。訪問者とのAI音声対話・FAQでの自己解決・有人オペレーターへのエスカレーション(WebRTC)・訪問者インサイト分析までを1つのウィジェットで提供することを目指しています。
+					運営者が開発している自社プロダクトです。訪問者とのAI音声対話・FAQでの自己解決・有人オペレーターへのエスカレーション(WebRTC)・訪問者インサイト分析までを1つのウィジェットで提供します。本ページ下部でβ版の実物を試せます。
 				</p>
 				<p class="mt-3 text-sm leading-7 tracking-[0.08em] text-brand-text/80">
 					<strong>WordPress / Laravel / React / Vue および素のHTMLに対応するフレームワーク非依存設計</strong>で、`&lt;script&gt;` タグを貼れるWebサイトであればどのスタックにも導入できることを特徴としています。
@@ -101,44 +101,20 @@ import { SITE_TITLE } from '../consts';
 					</div>
 					<div class="flex gap-3">
 						<dt class="shrink-0 font-semibold">現在のフェーズ</dt>
-						<dd>β版開発中(公開準備中)</dd>
+						<dd>β公開中(本ページで実物を試せます)</dd>
 					</div>
 				</dl>
 				<div class="mt-6 rounded-2xl border border-brand-text/20 bg-white/80 p-6">
-					<p class="font-display text-xs uppercase tracking-[0.3em] text-brand-text/60">β先行案内 受付中</p>
+					<p class="font-display text-xs uppercase tracking-[0.3em] text-brand-text/60">β版を試す</p>
 					<p class="mt-3 text-sm leading-7 tracking-[0.08em] text-brand-text/80">
-						「こえまど」β版の公開準備が整い次第、先行して案内をお届けします。興味をお持ちの方は、以下のボタンから意思表明をお願いします(お名前・所属などあればメール本文にご記入ください)。
+						下のウィジェットから、こえまどの音声対話・FAQ応答・問い合わせ送信を実際にお試しいただけます。導入のご相談は <a class="underline" data-mailto-u="info" data-mailto-d="happy-m-work.com" data-mailto-fill>info [at] happy-m-work.com</a> までお気軽にどうぞ。
 					</p>
-					<p class="mt-5">
-						<a
-							class="inline-flex items-center justify-center rounded-full bg-brand-text px-6 py-3 text-sm font-medium tracking-[0.08em] text-white no-underline transition hover:bg-brand-text/85"
-							data-koemado-mailto
-							href="#"
-						>
-							β先行案内を希望する →
-						</a>
-					</p>
-					<p class="mt-3 text-xs leading-6 tracking-[0.06em] text-brand-text/60">
-						ボタンを押すとお使いのメールソフトが起動し、件名と定型文が入力された状態で開きます。送信いただければ受付完了です。
-					</p>
+					<div class="mt-5">
+						<ai-op-widget endpoint="https://happy-m-work.com/koemado/api"></ai-op-widget>
+					</div>
 				</div>
 			</section>
-			<script is:inline>
-				(function () {
-					const EMAIL = 'info' + '@' + 'happy-m-work.com';
-					const SUBJECT = encodeURIComponent('【β先行案内希望】こえまど');
-					const BODY = encodeURIComponent(
-						'こえまどβ版の先行案内を希望します。\n\n' +
-						'■ お名前(任意):\n' +
-						'■ ご所属・サイトURL(任意):\n' +
-						'■ 想定している利用イメージ(任意):\n\n' +
-						'※ ご連絡いただいた内容は、β先行案内のご案内にのみ使用いたします。'
-					);
-					document.querySelectorAll('a[data-koemado-mailto]').forEach(function (el) {
-						el.setAttribute('href', 'mailto:' + EMAIL + '?subject=' + SUBJECT + '&body=' + BODY);
-					});
-				})();
-			</script>
+			<script type="module" src="https://happy-m-work.com/koemado/widget/index.js"></script>
 
 			<section class="space-y-4">
 				<h2 class="font-display text-2xl tracking-[0.12em] text-brand-text">編集方針</h2>
