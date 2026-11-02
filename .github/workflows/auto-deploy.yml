@@ -61,7 +61,7 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            koemado/**
+            tomori/**
 
       - name: Wait 30s before retry
         if: steps.deploy1.outcome == 'failure'
@@ -87,7 +87,7 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            koemado/**
+            tomori/**
 
       - name: Wait 60s before final retry
         if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
@@ -111,4 +111,4 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            koemado/**
+            tomori/**
