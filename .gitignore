@@ -23,3 +23,4 @@ pnpm-debug.log*
 # local-only: article drafts and dev preview pages
 drafts/
 src/pages/preview/
+scripts/
