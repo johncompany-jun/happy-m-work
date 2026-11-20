@@ -7,7 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getAllPostSummaries, getPostSummariesByCategory } from '../../lib/blog-data';
 import type { BlogPostSummary } from '../../lib/blog-data';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { CATEGORIES, buildBreadcrumbJsonLd } from '../../lib/seo';
+import { CATEGORIES, buildBreadcrumbJsonLd, buildItemListJsonLd } from '../../lib/seo';
 
 const displayDate = (post: BlogPostSummary) => post.updatedDate ?? post.pubDate;
 const posts = (await getAllPostSummaries()).sort(
@@ -27,6 +27,14 @@ const breadcrumbItems = [
 	{ name: 'BLOG' },
 ];
 
+const itemListJsonLd = buildItemListJsonLd(
+	'ブログ記事一覧',
+	posts.slice(0, 30).map((post) => ({
+		name: post.title,
+		url: `/blog/${post.slug}/`,
+	}))
+);
+
 const jsonLd = [
 	buildBreadcrumbJsonLd(
 		breadcrumbItems.map((b) => ({
@@ -34,6 +42,7 @@ const jsonLd = [
 			url: b.href ?? '/blog/',
 		}))
 	),
+	...(itemListJsonLd ? [itemListJsonLd] : []),
 ];
 ---
 

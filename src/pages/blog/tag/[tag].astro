@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import { SITE_TITLE } from '../../../consts';
-import { buildBreadcrumbJsonLd, getCategoryMeta } from '../../../lib/seo';
+import { buildBreadcrumbJsonLd, buildItemListJsonLd, getCategoryMeta } from '../../../lib/seo';
 import { getPostSummariesByTag } from '../../../lib/blog-data';
 import type { BlogPostSummary } from '../../../lib/blog-data';
 
@@ -40,6 +40,14 @@ const breadcrumbItems = [
 	{ name: `#${tag}` },
 ];
 
+const itemListJsonLd = buildItemListJsonLd(
+	`#${tag} の記事一覧`,
+	posts.slice(0, 30).map((post) => ({
+		name: post.title,
+		url: `/blog/${post.slug}/`,
+	}))
+);
+
 const jsonLd = [
 	buildBreadcrumbJsonLd(
 		breadcrumbItems.map((b) => ({
@@ -47,6 +55,7 @@ const jsonLd = [
 			url: b.href ?? `/blog/tag/${encodeURIComponent(tag)}/`,
 		}))
 	),
+	...(itemListJsonLd ? [itemListJsonLd] : []),
 ];
 ---
 

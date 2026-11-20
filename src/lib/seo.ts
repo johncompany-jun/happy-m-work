@@ -4,6 +4,18 @@ export const SITE_URL = 'https://happy-m-work.com';
 export const DEFAULT_OG_IMAGE =
   'https://happy-m-work.com/wp-content/uploads/2025/01/software-development-6523979_1280.jpg';
 
+export const AUTHOR = {
+  name: 'Jun Matsui',
+  url: `${SITE_URL}/about/`,
+  sameAs: [
+    'https://x.com/happy_web_eng',
+    'https://note.com/natty_sage2369',
+  ],
+  jobTitle: 'フリーランスエンジニア',
+  description:
+    'フリーランスのフルスタックエンジニア(京都)。BtoB SaaS開発とAI活用を軸に実務経験で得た知見を発信。',
+};
+
 export interface CategoryMeta {
   id: string;
   label: string;
@@ -165,6 +177,27 @@ export function buildHowToJsonLd(input: HowToJsonLdInput) {
   };
 }
 
+export interface ItemListEntry {
+  name: string;
+  url: string;
+}
+
+export function buildItemListJsonLd(name: string, items: ItemListEntry[]) {
+  if (!items.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(item.url),
+    })),
+  };
+}
+
 export function buildArticleJsonLd(input: ArticleJsonLdInput) {
   const categoryMeta = getCategoryMeta(input.category);
   const image = input.image ?? DEFAULT_OG_IMAGE;
@@ -189,9 +222,12 @@ export function buildArticleJsonLd(input: ArticleJsonLdInput) {
       },
     },
     author: {
-      '@type': 'Organization',
-      name: SITE_TITLE,
-      url: SITE_URL,
+      '@type': 'Person',
+      name: AUTHOR.name,
+      url: AUTHOR.url,
+      jobTitle: AUTHOR.jobTitle,
+      description: AUTHOR.description,
+      sameAs: AUTHOR.sameAs,
     },
     inLanguage: 'ja',
     ...(categoryMeta && { articleSection: categoryMeta.name }),
